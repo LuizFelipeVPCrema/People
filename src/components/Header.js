@@ -12,9 +12,8 @@ const style = StyleSheet.create({
     container: {
         marginTop: 32,
         backgroundColor: '#6ca2f7',
-        
-        alignItens: 'center',
-        justifyContent: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'     
     },
     tittle: {
         fontSize: 40,
