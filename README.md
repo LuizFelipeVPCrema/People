@@ -27,5 +27,6 @@ Este é um aplicativo simples de Lista de Contatos desenvolvido em React Native 
 - React Native
 - Expo
 - API Random User Generator
-
+- Axios
+- React Navigation
 
