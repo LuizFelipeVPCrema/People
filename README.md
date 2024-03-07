@@ -30,3 +30,22 @@ Este é um aplicativo simples de Lista de Contatos desenvolvido em React Native 
 - Axios
 - React Navigation
 
+## Conceitos Aprendidos
+
+- Criar um Projeto em React-Native
+- Construir layouts
+- Estilizar
+- Navegação (React Navigation)
+- Passar dados de uma página para outra
+- Trabalhar com código assíncrono (Promises)
+- Fazer chamadas HTTPs para busca de dados
+- Renderizar listas com alta performance
+- Trabalhar com imagens
+- Trabalhar com flex box
+- Tornar componentes "Clicáveis"
+- Tratar estado de loading
+- Tratar Erros
+- Renderização condicional
+- Organização de um projeto
+- Boas Práticas
+
