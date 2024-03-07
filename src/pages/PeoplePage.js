@@ -11,7 +11,7 @@ export default class PeoplePage extends React.Component {
     super(props);
 
     this.state = {
-      people: []
+      people: [],
     };
   }
 
@@ -26,10 +26,17 @@ export default class PeoplePage extends React.Component {
       })
   }
 
+  navigateToPeopleDetail = () => {
+    this.props.navigation.navigate('PeopleDetail');
+  }
+
   render() {
     return (
       <View>
-        <PeopleList people={this.state.people}/>
+        <PeopleList 
+          people={this.state.people}
+          onPressItem={this.navigateToPeopleDetail}
+        />
       </View>
     );
   }

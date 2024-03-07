@@ -1,15 +1,27 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { View } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PeoplePage from './src/pages/PeoplePage';
+import PeopleDetailPage from './src/pages/PeopleDetailPage';
 
 function HomeScreen() {
+  
+  const navigation = useNavigation();
+  
   return (
     <View>
-      <PeoplePage></PeoplePage>
+      <PeoplePage navigation={navigation}/>
     </View>
   );
+}
+
+function PeopleDetailsScreen() {
+  return (
+    <View>
+      <PeopleDetailPage />    
+    </View>
+  )
 }
 
 
@@ -32,14 +44,13 @@ function App() {
         }}
       >
 
-        <Stack.Screen 
-          name="Home"
-          component={HomeScreen} 
-          options={{ title: 'Pessoas!'}}  
-        />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Pessoas!'}}/>
+        <Stack.Screen name="PeopleDetail" component={PeopleDetailsScreen} options={{ title: 'Perfil'}}/>
+      
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
 export default App;
+

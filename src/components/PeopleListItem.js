@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, Button } from 'react-native'
 import capitalizeFirstLetter from '../util/CapitalizeFirstLeatter'
 
-const PeopleListItem = props => {
-    const { people } = props;
+const PeopleListItem = (props) => {
+    const { people, onPressItem } = props;
     const {title, first, last } = people.name
+
     return(
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPressItem}>
             <View style={styles.line}>
                     <Image style={styles.avatar} source={{ uri: people.picture.thumbnail}} />
                     <Text style={styles.lineText}>
@@ -35,6 +36,11 @@ const styles =  StyleSheet.create({
         marginLeft: 15,
         flex: 1,
         borderRadius: 50,
+    },
+    button: {
+        aspectRatio: 1,
+        borderRadius: 50,
+        marginRight:14,
     }
 })
 
