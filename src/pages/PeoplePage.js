@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Text } from 'react-native';
 
 import PeopleList from '../components/PeopleList';
 
@@ -13,6 +13,7 @@ export default class PeoplePage extends React.Component {
     this.state = {
       people: [],
       loading: false,
+      error: false,
     };
   }
 
@@ -26,7 +27,12 @@ export default class PeoplePage extends React.Component {
             people: results,
             loading: false
           });
-        })
+        }).catch(error => {
+          this.setState({ 
+            error: true,
+            loading: false 
+          })
+        });
   }
 
   navigateToPeopleDetail = (pageParams) => {
@@ -39,10 +45,13 @@ export default class PeoplePage extends React.Component {
         { 
         this.state.loading 
         ? <ActivityIndicator size="large" color={'#6ca2f7'} style={styles.horizontal}/> 
-        :  <PeopleList
-        people={this.state.people}
-        onPressItem={this.navigateToPeopleDetail}
-        /> 
+        :  this.state.error
+          ? <Text style={[styles.error, styles.horizontal]}>Ops... Algo deu errado :( </Text>   //  <ErrorComponent />
+          : <PeopleList
+          people={this.state.people}
+          onPressItem={this.navigateToPeopleDetail}
+          /> 
+        
       }
         
       </View>
@@ -60,6 +69,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 10,
   },
+  error: {
+    color: 'red',
+    alignSelf: 'center',
+    fontSize: 18,
+  }
 });
 
 
