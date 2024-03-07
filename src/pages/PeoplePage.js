@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 import PeopleList from '../components/PeopleList';
 
@@ -12,18 +12,21 @@ export default class PeoplePage extends React.Component {
 
     this.state = {
       people: [],
+      loading: false,
     };
   }
 
   componentDidMount() {
-    axios
-      .get('https://randomuser.me/api/?nat=BR&results=150')
-      .then(response => {
-        const { results } =  response.data;
-        this.setState({
-          people: results
-        });
-      })
+    this.setState({ loading: true });
+      axios
+        .get('https://randomuser.me/api/?nat=BR&results=15')
+        .then(response => {
+          const { results } =  response.data;
+          this.setState({
+            people: results,
+            loading: false
+          });
+        })
   }
 
   navigateToPeopleDetail = (pageParams) => {
@@ -32,12 +35,31 @@ export default class PeoplePage extends React.Component {
 
   render() {
     return (
-      <View>
-        <PeopleList 
-          people={this.state.people}
-          onPressItem={this.navigateToPeopleDetail}
-        />
+      <View style={styles.container}>
+        { 
+        this.state.loading 
+        ? <ActivityIndicator size="large" color={'#6ca2f7'} style={styles.horizontal}/> 
+        :  <PeopleList
+        people={this.state.people}
+        onPressItem={this.navigateToPeopleDetail}
+        /> 
+      }
+        
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+  },
+  horizontal: {
+    flex:1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
+});
+
+
