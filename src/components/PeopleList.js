@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView,  StyleSheet} from "react-native";
+import { FlatList,  StyleSheet} from "react-native";
 import PeopleListItem from "./PeopleListItem";
 
 
@@ -8,18 +8,19 @@ const PeopleList = (props) => {
 
     const { people, onPressItem } = props;
 
-    const items = people.map(people =>  
-        <PeopleListItem 
-            key={people.name.first} 
-            people={people}
-            onPressItem={onPressItem} 
-        /> 
-    )
-
     return(
-        <ScrollView style={styles.container}>
-            { items }
-        </ScrollView>
+        <FlatList 
+            style={styles.container}
+            data={people}
+            renderItem={({ item }) => ( 
+                <PeopleListItem 
+                    people={item}
+                    onPressItem={onPressItem} 
+                /> 
+            )}    
+            keyExtractor={item => item.id.value}
+        />
+        
     );
 }
 
