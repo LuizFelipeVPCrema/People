@@ -26,8 +26,8 @@ export default class PeoplePage extends React.Component {
       })
   }
 
-  navigateToPeopleDetail = () => {
-    this.props.navigation.navigate('PeopleDetail');
+  navigateToPeopleDetail = (pageParams) => {
+    this.props.navigation.navigate('PeopleDetail', pageParams);
   }
 
   render() {

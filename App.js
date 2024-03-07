@@ -32,6 +32,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
+          headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#6ca2f7',
             borderBottomWidth: 1,
@@ -45,7 +46,7 @@ function App() {
       >
 
         <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Pessoas!'}}/>
-        <Stack.Screen name="PeopleDetail" component={PeopleDetailsScreen} options={{ title: 'Perfil'}}/>
+        <Stack.Screen name="PeopleDetail" component={PeopleDetailsScreen} options={({ route }) => ({ title: route.params.people.name.first})}/>
       
       </Stack.Navigator>
     </NavigationContainer>
