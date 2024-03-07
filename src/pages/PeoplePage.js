@@ -17,7 +17,7 @@ export default class PeoplePage extends React.Component {
 
   componentDidMount() {
     axios
-      .get('https://randomuser.me/api/?nat=BR&results=5')
+      .get('https://randomuser.me/api/?nat=BR&results=25')
       .then(response => {
         const { results } =  response.data;
         this.setState({
